@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, watch } from "vue";
 import { useRoute } from "vue-router";
-import { navigation } from "@/data/navigation";
+import { navigation, topLevelPages } from "@/data/navigation";
 import AppIcon from "@/components/icons/AppIcon.vue";
 
 defineProps<{ collapsed: boolean }>();
@@ -29,11 +29,22 @@ function toggleGroup(groupId: string): void {
 </script>
 
 <template>
-    <nav class="flex shrink-0 flex-col gap-px overflow-y-auto border-r border-slate-200 bg-white px-2 py-2.5 transition-[width] duration-150" :class="collapsed ? 'w-[76px]' : 'w-[264px]'">
+    <nav class="flex shrink-0 flex-col gap-px overflow-y-auto border-r border-slate-200 bg-white px-2 py-2.5 transition-[width] duration-150" :class="collapsed ? 'w-19' : 'w-66'">
+        <router-link
+            v-for="page in topLevelPages"
+            :key="page.id"
+            :to="page.path"
+            class="flex h-9.5 items-center gap-3 rounded-lg px-2.5 hover:bg-slate-100"
+            :class="route.path === page.path ? 'bg-primary-50' : ''"
+        >
+            <AppIcon :name="page.icon" :size="18" class="shrink-0" :class="route.path === page.path ? 'text-primary-700' : 'text-slate-600'" />
+            <span v-if="!collapsed" class="text-[13px] font-semibold" :class="route.path === page.path ? 'text-primary-700' : 'text-slate-700'">{{ page.label }}</span>
+        </router-link>
+
         <div v-for="group in navigation" :key="group.id" class="flex flex-col">
             <button
                 type="button"
-                class="flex h-[38px] items-center gap-3 rounded-lg px-2.5 text-left hover:bg-slate-100"
+                class="flex h-9.5 items-center gap-3 rounded-lg px-2.5 text-left hover:bg-slate-100"
                 :class="expanded[group.id] && !collapsed ? 'bg-slate-50' : ''"
                 @click="toggleGroup(group.id)"
             >

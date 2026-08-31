@@ -41,10 +41,10 @@ const statusOptions: SelectOption[] = [
         </div>
 
         <div class="flex flex-wrap items-end gap-3 rounded-xl border border-slate-200 bg-white p-3.5">
-            <BaseSelect v-model="category" label="カテゴリー" :options="categoryOptions" class="w-[150px]" />
-            <BaseSelect v-model="warehouse" label="倉庫区分" :options="warehouseOptions" class="w-[150px]" />
-            <BaseSelect v-model="status" label="販売状態" :options="statusOptions" class="w-[150px]" />
-            <BaseInput v-model="keyword" label="SKU・品番" placeholder="検索" icon="search" class="w-[190px]" />
+            <BaseSelect v-model="category" label="カテゴリー" :options="categoryOptions" class="w-37.5" />
+            <BaseSelect v-model="warehouse" label="倉庫区分" :options="warehouseOptions" class="w-37.5" />
+            <BaseSelect v-model="status" label="販売状態" :options="statusOptions" class="w-37.5" />
+            <BaseInput v-model="keyword" label="SKU・品番" placeholder="検索" icon="search" class="w-47.5" />
             <div class="flex-1" />
             <BaseButton variant="outline" size="sm">リセット</BaseButton>
             <BaseButton variant="primary" size="sm">適用</BaseButton>

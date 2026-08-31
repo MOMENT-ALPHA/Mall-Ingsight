@@ -4,6 +4,10 @@ export interface NavPage {
     path: string;
 }
 
+export interface NavLink extends NavPage {
+    icon: string;
+}
+
 export interface NavGroup {
     id: string;
     label: string;
@@ -11,13 +15,9 @@ export interface NavGroup {
     pages: NavPage[];
 }
 
+export const topLevelPages: NavLink[] = [{ id: "PG-010", label: "ダッシュボード", icon: "home", path: "/dashboard" }];
+
 export const navigation: NavGroup[] = [
-    {
-        id: "overall",
-        label: "全体",
-        icon: "home",
-        pages: [{ id: "PG-010", label: "ダッシュボード", path: "/dashboard" }],
-    },
     {
         id: "import",
         label: "取込",

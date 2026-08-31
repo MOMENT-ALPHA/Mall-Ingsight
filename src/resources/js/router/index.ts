@@ -1,11 +1,18 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
-import { navigation } from "@/data/navigation";
+import { navigation, topLevelPages } from "@/data/navigation";
 import { useAuthStore } from "@/stores/auth";
 import AppLayout from "@/layouts/AppLayout.vue";
 import LoginView from "@/views/LoginView.vue";
 import PlaceholderView from "@/views/PlaceholderView.vue";
 
-const pageRoutes: RouteRecordRaw[] = navigation.flatMap((group) =>
+const topLevelRoutes: RouteRecordRaw[] = topLevelPages.map((page) => ({
+    path: page.path.slice(1),
+    name: page.id,
+    component: PlaceholderView,
+    meta: { title: page.label },
+}));
+
+const groupRoutes: RouteRecordRaw[] = navigation.flatMap((group) =>
     group.pages.map((page) => ({
         path: page.path.slice(1),
         name: page.id,
@@ -13,6 +20,8 @@ const pageRoutes: RouteRecordRaw[] = navigation.flatMap((group) =>
         meta: { title: page.label, group: group.label },
     })),
 );
+
+const pageRoutes: RouteRecordRaw[] = [...topLevelRoutes, ...groupRoutes];
 
 const routes: RouteRecordRaw[] = [
     {

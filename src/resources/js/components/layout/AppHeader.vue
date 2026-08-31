@@ -26,7 +26,7 @@ function handleLogout(): void {
 </script>
 
 <template>
-    <header class="flex h-[60px] shrink-0 items-center gap-3.5 border-b border-slate-200 bg-white px-4">
+    <header class="flex h-15 shrink-0 items-center gap-3.5 border-b border-slate-200 bg-white px-4">
         <button type="button" class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100" aria-label="サイドバーの開閉" @click="emit('toggle-sidebar')">
             <AppIcon name="menu" :size="19" class="transition-transform duration-150" :class="collapsed ? 'rotate-180' : ''" />
         </button>
@@ -34,9 +34,9 @@ function handleLogout(): void {
         <div class="h-6 w-px bg-slate-200" />
 
         <router-link to="/dashboard" class="flex items-center gap-2.5">
-            <span class="flex h-7 w-7 items-end justify-center gap-[3px] rounded-lg bg-primary-600 p-1.5">
-                <span class="h-[7px] w-1 rounded-sm bg-primary-200"></span>
-                <span class="h-[13px] w-1 rounded-sm bg-white"></span>
+            <span class="flex h-7 w-7 items-end justify-center gap-0.75 rounded-lg bg-primary-600 p-1.5">
+                <span class="h-1.75 w-1 rounded-sm bg-primary-200"></span>
+                <span class="h-3.25 w-1 rounded-sm bg-white"></span>
                 <span class="h-1 w-1 rounded-sm bg-primary-300"></span>
             </span>
             <span class="text-[15px] font-bold tracking-tight text-slate-900">Mall Insight</span>
@@ -46,7 +46,7 @@ function handleLogout(): void {
 
         <div class="flex items-center gap-1.5 text-[13px]">
             <span class="text-slate-400">{{ groupLabel }}</span>
-            <span class="text-slate-300">/</span>
+            <span v-if="groupLabel" class="text-slate-300">/</span>
             <span class="font-semibold text-slate-900">{{ pageTitle }}</span>
         </div>
 
@@ -71,7 +71,7 @@ function handleLogout(): void {
         <div class="h-6 w-px bg-slate-200" />
 
         <button id="user-menu-button" type="button" data-dropdown-toggle="user-menu" data-dropdown-placement="bottom-end" class="flex items-center gap-2 rounded-lg px-1.5 py-1 hover:bg-slate-100">
-            <span class="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-primary-100 text-[12.5px] font-bold text-primary-700">
+            <span class="flex h-7.5 w-7.5 items-center justify-center rounded-full bg-primary-100 text-[12.5px] font-bold text-primary-700">
                 {{ auth.user?.name?.charAt(0) ?? "?" }}
             </span>
             <span class="flex flex-col items-start">
