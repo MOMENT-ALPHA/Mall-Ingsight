@@ -69,7 +69,7 @@ export const navigation: NavGroup[] = [
     {
         id: "stock",
         label: "在庫",
-        icon: "box",
+        icon: "package_2",
         pages: [
             { id: "PG-610", label: "在庫照会", path: "/inventory/lookup" },
             { id: "PG-620", label: "在庫手入力", path: "/inventory/manual-entry" },
@@ -93,8 +93,7 @@ export const navigation: NavGroup[] = [
         label: "マスタ",
         icon: "database",
         pages: [
-            { id: "PG-810", label: "商品・SKUマスタ", path: "/masters/products" },
-            { id: "PG-820", label: "商品コード対応表", path: "/masters/code-mapping" },
+            { id: "PG-810", label: "商品マスタ", path: "/masters/products" },
             { id: "PG-830", label: "倉庫マスタ", path: "/masters/warehouses" },
             { id: "PG-840", label: "調達マスタ", path: "/masters/procurement" },
         ],

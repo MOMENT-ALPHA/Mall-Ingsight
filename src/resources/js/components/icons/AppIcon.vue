@@ -89,7 +89,8 @@ const props = withDefaults(defineProps<{ name: string; size?: number }>(), { siz
 </script>
 
 <template>
-    <svg :width="props.size" :height="props.size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <component :is="shape.tag" v-for="(shape, index) in icons[props.name] ?? []" :key="index" v-bind="shape.attrs" />
+    <span v-if="!icons[props.name]" class="material-symbols-outlined" :style="{ fontSize: `${props.size}px` }" aria-hidden="true">{{ props.name }}</span>
+    <svg v-else :width="props.size" :height="props.size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <component :is="shape.tag" v-for="(shape, index) in icons[props.name]" :key="index" v-bind="shape.attrs" />
     </svg>
 </template>
